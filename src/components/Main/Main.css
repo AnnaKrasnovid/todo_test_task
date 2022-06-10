@@ -68,8 +68,10 @@ justify-content: space-between;
   margin: 0;
 }
 
-.main__state_type_delete {
+.main__button_type_delete {
   color: #f53e4e;
+  border: none;
+  padding: 0;
 }
 
 .main__box-state {

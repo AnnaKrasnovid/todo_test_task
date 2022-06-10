@@ -1,18 +1,18 @@
 import React from 'react';
 import './Form.css';
 
-function Form(props) {
+function Form({onAddTask,error}) {
   const [task, setTask] = React.useState('');
+  //const [error, setError] = React.useState('');
 
   function handleChange(e){
     setTask(e.target.value)
 }
 
 function handleSubmit(e) {
-  //e.preventDefault();
-  props.onAddTask({
-    task: task,
-  });
+  e.preventDefault();
+  onAddTask(task);
+  setTask('')
 }
 
   return (
@@ -25,7 +25,7 @@ function handleSubmit(e) {
         placeholder="What needs to be done?"
         value={task || ''}
         onChange={handleChange} />
-        <span className="form__error">The field cannot be empty</span>
+        <span className="form__error">{error}</span>
     </form>
   );
 }
