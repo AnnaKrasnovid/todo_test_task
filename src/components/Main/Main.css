@@ -1,0 +1,96 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 3%;
+  border-radius: 30px;
+  background-color: #fff;
+  min-height: 600px;
+  max-width: 600px;
+  width: 100%;
+  min-width: 230px;
+}
+
+.main__title {
+  font-size: 52px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: #000;
+  margin: 0;
+}
+
+.main__container {
+  border: 1px solid #8B8B8B;
+  border-radius: 20px;
+  padding: 20px;
+  width: 80%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main__box {
+display: flex;
+justify-content: space-evenly;
+}
+
+.main__button {
+  color: rgb(53, 52, 52);
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+  border: 1px solid #b6b5b5;
+  border-radius: 5px;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.main__button_active {
+  color: #65ca93;
+  border: 2px solid #65ca93;
+}
+
+.main__block {
+display: flex;
+flex-direction: column;
+min-height: 70px;
+justify-content: space-between;
+}
+
+.main__state {
+  color: rgb(53, 52, 52);
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+}
+
+.main__state_type_delete {
+  color: #f53e4e;
+}
+
+.main__box-state {
+  margin: 0 5px;
+  min-width: 170px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main__box-delete {
+  display: flex;
+  min-width: 153px;
+}
+
+.main__info {
+  color: #65ca93;
+  font-weight: 400;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+
+}

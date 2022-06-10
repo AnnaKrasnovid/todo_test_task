@@ -1,0 +1,41 @@
+.form {
+  border: 0;
+  outline: none;
+  color: #FFFFFF;
+  width: 100%;
+}
+
+.form__input {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.11;
+  color: #3d3d3d;
+  padding: 18px 18px 18px 40px;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #b6b5b5;
+  box-sizing: border-box;
+  background-image: url(../../image/done.svg);
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: 10px 14px;
+  font-weight: 400;
+}
+
+.form__input::placeholder {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.11;
+  color: #b6b5b5;
+  font-weight: 400;
+}
+
+.form__error {
+  color: #f53e4e;
+  font-weight: 400;
+  font-size: 14px;
+display: block;
+margin-top: 5px;
+min-height: 17px;
+}

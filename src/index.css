@@ -1,0 +1,16 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/font.css);
+
+#root {
+  background-color: #202020;
+  min-height: 100vh;
+  max-width: 100vw;
+  width: 100%;
+  color: #fff;
+  font-family: 'Inter', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  box-sizing: border-box;
+}
