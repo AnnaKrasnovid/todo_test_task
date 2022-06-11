@@ -32,12 +32,12 @@
 }
 
 .main__box {
-display: flex;
-justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .main__button {
-  color: rgb(53, 52, 52);
+  color: #292828;
   font-weight: 400;
   font-size: 14px;
   margin: 0;
@@ -55,14 +55,15 @@ justify-content: space-evenly;
 }
 
 .main__block {
-display: flex;
-flex-direction: column;
-min-height: 70px;
-justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .main__state {
-  color: rgb(53, 52, 52);
+  color: #292828;
   font-weight: 400;
   font-size: 14px;
   margin: 0;
@@ -93,6 +94,3 @@ justify-content: space-between;
   margin-left: 10px;
 }
 
-@media screen and (max-width: 600px) {
-
-}

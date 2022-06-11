@@ -6,13 +6,13 @@ function Form({onAddTask,error}) {
   //const [error, setError] = React.useState('');
 
   function handleChange(e){
-    setTask(e.target.value)
+    setTask(e.target.value);
 }
 
 function handleSubmit(e) {
   e.preventDefault();
   onAddTask(task);
-  setTask('')
+  setTask('');
 }
 
   return (

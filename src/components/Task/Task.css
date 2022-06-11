@@ -1,0 +1,26 @@
+.task {
+  padding: 15px;
+  border: 1px solid #b6b5b5;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.task:first-child {
+  margin-top: 0;
+}
+
+.task__checkbox {}
+
+.task__title {
+  color: #292828;
+  margin: 0 0 0 10px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.task__title_active {
+  text-decoration: line-through;
+  color: #c5c5c5;
+}
