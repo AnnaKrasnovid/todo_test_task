@@ -4,7 +4,7 @@ import React from 'react';
 
 function TodosList({ tasks, toggleCheckbox, tasksFiltered, buttonActiveAllTasks }) {
 
-  const taskToRender = buttonActiveAllTasks ? tasks : tasksFiltered
+  const taskToRender = buttonActiveAllTasks ? tasks : tasksFiltered;
 
   return (
     <ul className="todos-list">

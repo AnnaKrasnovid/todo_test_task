@@ -15,7 +15,8 @@ function Main({
   buttonActiveTasksActive,
   tasksFiltered,
   buttonActiveCompleted,
-  onDeleteTasks
+  onDeleteTasks,
+  isDeleteTask
 }) {
 
   return (
@@ -65,7 +66,7 @@ function Main({
                 onClick={onDeleteTasks}>
                 Clear completed
               </button>
-              <span className="main__info">Done</span>
+              <span className={isDeleteTask ? "main__info" : ''}>Done</span>
             </div>
           </div>
         </div>

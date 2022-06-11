@@ -4,11 +4,11 @@ import './Task.css';
 function Task({ task, toggleCheckbox, taskId, checked }) {
 
   function handleChange() {
-    checked = !checked
+    checked = !checked;
   }
 
   function handleClick() {
-    toggleCheckbox(taskId)
+    toggleCheckbox(taskId);
   }
 
   return (

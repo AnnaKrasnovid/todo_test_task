@@ -1,9 +1,8 @@
 import React from 'react';
 import './Form.css';
 
-function Form({onAddTask,error}) {
+function Form({onAddTask, error}) {
   const [task, setTask] = React.useState('');
-  //const [error, setError] = React.useState('');
 
   function handleChange(e){
     setTask(e.target.value);
