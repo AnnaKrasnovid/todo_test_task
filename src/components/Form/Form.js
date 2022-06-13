@@ -22,7 +22,7 @@ function Form({ onAddTask }) {
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit} data-testid='submit-elem'>
       <input
         id="task"
         name="task"
@@ -31,7 +31,9 @@ function Form({ onAddTask }) {
         placeholder="What needs to be done?"
         minLength='1'
         value={task || ''}
-        onChange={handleChange} />
+        onChange={handleChange}
+        data-testid='value-elem'
+        />
       <span className="form__error">{isValid ? 'The field cannot be empty' : ''}</span>
     </form>
   );
