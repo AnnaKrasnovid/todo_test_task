@@ -1,97 +1,109 @@
 import Main from '../Main/Main';
 import React from 'react';
+import tasksData from '../../utils/tasksData'
 
 function App() {
-  const [tasks, setTasks] = React.useState([]);
+  const [tasks, setTasks] = React.useState(tasksData);
   const [tasksFiltered, setTasksFiltered] = React.useState([]);
-  const [error, setError] = React.useState('');
   const [unfinishedTasks, setUnfinishedTasks] = React.useState(0);
   const [buttonActiveAllTasks, setButtonActiveAllTasks] = React.useState(true);
   const [buttonActiveTasksActive, setButtonActiveTasksActive] = React.useState(false);
   const [buttonActiveCompleted, setButtonActiveCompleted] = React.useState(false);
   const [isDeleteTask, setIsDeleteTask] = React.useState(false);
 
-  function handleAddTask(newTask) {
+  function createNewTask(newTask) {
     const newTaskObj = {
       id: Math.random().toString(36).slice(2),
       task: newTask,
       checked: false
     };
+    return newTaskObj;
+  }
+
+  function handleAddTask(newTask) {
+    const newTaskObj = createNewTask(newTask);
 
     if (newTask) {
       setTasks([...tasks, newTaskObj]);
-      handleOutstandingTasks(1, tasks);
-      setError('');
+      const tasksRemaining = handleOutstandingTasks(tasks);
+      setUnfinishedTasks(tasksRemaining.length + 1)
     } else if (buttonActiveTasksActive) {
       setTasks([...tasks, newTaskObj]);
       setTasksFiltered([...tasksFiltered, newTaskObj]);
-    } else {
-      setError('The field cannot be empty');
     }
+
     setIsDeleteTask(false);
   }
 
   function toggleStateCheckbox(taskMark) {
-    return tasks.map((task) => (task.id === taskMark) ? {...task, checked: !task.checked} : {...task});
+    const res = tasks.map((task) => (task.id === taskMark) ? { ...task, checked: !task.checked } : { ...task });
+    console.log(res);
+    return res;
   }
 
   function handleToggleCheckbox(taskMark) {
     const tasksComplete = toggleStateCheckbox(taskMark);
     setTasks(tasksComplete);
-    handleOutstandingTasks(0, tasksComplete);
+    const tasksRemaining = handleOutstandingTasks(tasksComplete);
+    setUnfinishedTasks(tasksRemaining.length);
 
-    if(buttonActiveTasksActive) {
-      const tasksActive = tasksComplete.filter(((task) => task.checked === false ));
+    if (buttonActiveTasksActive) {
+      const tasksActive = tasksComplete.filter((task) => task.checked === false);
       setTasks(tasksComplete);
       setTasksFiltered(tasksActive);
     }
 
-    if(buttonActiveCompleted) {
-      const tasksActive = tasksComplete.filter(((task) => task.checked === true ));
+    if (buttonActiveCompleted) {
+      const tasksActive = tasksComplete.filter((task) => task.checked === true);
       setTasks(tasksComplete);
       setTasksFiltered(tasksActive);
     }
+
     setIsDeleteTask(false);
   }
 
-  function handleOutstandingTasks(number, list) {
-    const tasksRemaining = list.filter((task) => task.checked === false ? task : '');
-    setUnfinishedTasks(tasksRemaining.length + number);
+  function handleOutstandingTasks(list) {
+    return list.filter((task) => task.checked === false ? task : '');
   }
 
   function visibleAllTasks() {
     setButtonActiveTasksActive(false);
     setButtonActiveCompleted(false);
-    const tasksAll = tasks.filter(((task) => task.checked === false &&  task.checked === false ? task : ''));
+    setButtonActiveAllTasks(true);
+    const tasksAll = tasks.filter((task) => task.checked === false && task.checked === false ? task : '');
     setTasksFiltered(tasksAll);
-    setButtonActiveAllTasks(true);;
     setIsDeleteTask(false);
   }
 
   function visibleActiveTasks() {
     setButtonActiveAllTasks(false);
     setButtonActiveCompleted(false);
-    const tasksActive = tasks.filter(((task) => task.checked === false ? task : ''));
-    setTasksFiltered(tasksActive);
     setButtonActiveTasksActive(true);
+    const tasksActive = handleOutstandingTasks(tasks);
+    setTasksFiltered(tasksActive);
     setIsDeleteTask(false);
+  }
+
+  function filteredTasks(list, state) {
+    const tasks = list.filter(((task) => task.checked !== state));
+    return tasks;
   }
 
   function visibleCompletedTasks() {
     setButtonActiveAllTasks(false);
     setButtonActiveTasksActive(false);
     setButtonActiveCompleted(true);
-    const tasksCompleted = tasks.filter(((task) => task.checked !== false ));
+    const tasksCompleted = filteredTasks(tasks, false);
     setTasksFiltered(tasksCompleted);
     setIsDeleteTask(false);
   }
 
   function deleteCompletedTasks() {
-    const tasksCompletedDeleteAll = tasks.filter(((task) => task.checked === false ));
+    const tasksCompletedDeleteAll = filteredTasks(tasks, true);
     setTasks(tasksCompletedDeleteAll);
 
-    if(!buttonActiveTasksActive) {
-      const tasksCompletedDeleteFiltered = tasksCompletedDeleteAll.filter(((task) => task.checked !== false ));
+    if (!buttonActiveTasksActive) {
+      const tasksCompletedDeleteFiltered = filteredTasks(tasksCompletedDeleteAll, false);
       setTasksFiltered(tasksCompletedDeleteFiltered);
     }
     setIsDeleteTask(true);
@@ -103,7 +115,6 @@ function App() {
       tasks={tasks}
       tasksFiltered={tasksFiltered}
       toggleCheckbox={handleToggleCheckbox}
-      error={error}
       unfinishedTasks={unfinishedTasks}
       onAllTask={visibleAllTasks}
       onActiveTasks={visibleActiveTasks}

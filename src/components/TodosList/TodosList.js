@@ -3,7 +3,6 @@ import Task from '../Task/Task';
 import React from 'react';
 
 function TodosList({ tasks, toggleCheckbox, tasksFiltered, buttonActiveAllTasks }) {
-
   const taskToRender = buttonActiveAllTasks ? tasks : tasksFiltered;
 
   return (

@@ -36,24 +36,6 @@
   justify-content: space-evenly;
 }
 
-.main__button {
-  color: #292828;
-  font-weight: 400;
-  font-size: 14px;
-  margin: 0;
-  border: 1px solid #b6b5b5;
-  border-radius: 5px;
-  background-color: #fff;
-  box-sizing: border-box;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.main__button_active {
-  color: #65ca93;
-  border: 2px solid #65ca93;
-}
-
 .main__block {
   display: flex;
   flex-direction: column;
@@ -80,6 +62,10 @@
   background-color: #fff;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.main__button-delete_disaibled {
+  color: #b6b5b5;
 }
 
 .main__box-state {

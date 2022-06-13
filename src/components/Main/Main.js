@@ -1,23 +1,24 @@
 import './Main.css';
 import Form from '../Form/Form';
 import TodosList from '../TodosList/TodosList';
+import FilteredButton from '../FilteredButton/FilteredButton';
 
-function Main({
-  onAddTask,
-  tasks,
-  error,
-  toggleCheckbox,
-  unfinishedTasks,
-  onAllTask,
-  onActiveTasks,
-  onCompletedTasks,
-  buttonActiveAllTasks,
-  buttonActiveTasksActive,
-  tasksFiltered,
-  buttonActiveCompleted,
-  onDeleteTasks,
-  isDeleteTask
-}) {
+function Main(
+  {
+    onAddTask,
+    tasks,
+    toggleCheckbox,
+    unfinishedTasks,
+    onAllTask,
+    onActiveTasks,
+    onCompletedTasks,
+    buttonActiveAllTasks,
+    buttonActiveTasksActive,
+    tasksFiltered,
+    buttonActiveCompleted,
+    onDeleteTasks,
+    isDeleteTask
+  }) {
 
   return (
     <section className="main">
@@ -25,7 +26,6 @@ function Main({
       <div className="main__container">
         <Form
           onAddTask={onAddTask}
-          error={error}
         />
         <TodosList
           tasks={tasks}
@@ -35,28 +35,22 @@ function Main({
         />
         <div className="main__block">
           <div className="main__box-state">
-            <button
-              className={`main__button ${buttonActiveAllTasks ? "main__button_active" : ''}`}
-              type='button'
-              onClick={onAllTask}>
-              All
-            </button>
-
-            <button
-              className={`main__button ${buttonActiveTasksActive ? "main__button_active" : ''}`}
-              type="button"
-              onClick={onActiveTasks}>
-              Active
-            </button>
-
-            <button
-              className={`main__button ${buttonActiveCompleted ? "main__button_active" : ''}`}
-              type="button"
-              onClick={onCompletedTasks}>
-              Completed
-            </button>
+            <FilteredButton
+              isButtonActive={buttonActiveAllTasks}
+              onButtonActive={onAllTask}
+              title={'All'}
+            />
+            <FilteredButton
+              isButtonActive={buttonActiveTasksActive}
+              onButtonActive={onActiveTasks}
+              title={'Active'}
+            />
+            <FilteredButton
+              isButtonActive={buttonActiveCompleted}
+              onButtonActive={onCompletedTasks}
+              title={'Completed'}
+            />
           </div>
-
           <div className="main__box">
             <p className="main__state">{unfinishedTasks} items left</p>
             <div className="main__box-delete">
