@@ -1,19 +1,22 @@
 import './TodosList.css';
-import Task from '../Task/Task';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import Task from '../Task/Task';
 
-function TodosList({ tasks, toggleCheckbox, tasksFiltered, buttonActiveAllTasks }) {
-  const taskToRender = buttonActiveAllTasks ? tasks : tasksFiltered;
+function TodosList({ toggleCheckbox, buttonActiveAllTasks, onChangeCheckbox }) {
+  //useSelector принимает функцию,которая принимает store
+  const todos = (useSelector(state => state.todos.todos));
+  const filterTodos = (useSelector(state => state.todos.filterTodos));
+  const taskToRender = buttonActiveAllTasks ? todos : filterTodos;
 
   return (
     <ul className="todos-list">
       {taskToRender.map((task) =>
         <Task
-          task={task.task}
           key={task.id}
           toggleCheckbox={toggleCheckbox}
-          taskId={task.id}
-          checked={task.checked}
+          onChangeCheckbox={onChangeCheckbox}
+          {...task}
         />
       )}
     </ul>

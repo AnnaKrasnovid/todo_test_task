@@ -1,14 +1,10 @@
 import React from 'react';
 import './Task.css';
 
-function Task({ task, toggleCheckbox, taskId, checked }) {
+function Task({ task, onChangeCheckbox, id, checked }) {
 
-  function handleChange() {
-    checked = !checked;
-  }
-
-  function handleClick() {
-    toggleCheckbox(taskId);
+  function handleChangeCheckbox() {
+    onChangeCheckbox(id);
   }
 
   return (
@@ -16,13 +12,12 @@ function Task({ task, toggleCheckbox, taskId, checked }) {
       <input
         type="checkbox"
         className="task__checkbox"
-        name={taskId}
-        id={taskId}
+        name={id}
+        id={id}
         checked={checked}
-        onChange={handleChange}
-        onClick={handleClick}
+        onChange={handleChangeCheckbox}
       />
-      <p className={`task__title ${checked ? "task__title_active" : ''}`}>{task}</p>
+      <p className={`task__title ${checked ? 'task__title_active' : ''}`}>{task}</p>
     </li>
   );
 }

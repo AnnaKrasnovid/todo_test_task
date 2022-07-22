@@ -1,3 +1,4 @@
+
 import './Main.css';
 import Form from '../Form/Form';
 import TodosList from '../TodosList/TodosList';
@@ -6,18 +7,16 @@ import FilteredButton from '../FilteredButton/FilteredButton';
 function Main(
   {
     onAddTask,
-    tasks,
-    toggleCheckbox,
-    unfinishedTasks,
+    //unfinishedTasks,
     onAllTask,
     onActiveTasks,
     onCompletedTasks,
     buttonActiveAllTasks,
     buttonActiveTasksActive,
-    tasksFiltered,
     buttonActiveCompleted,
     onDeleteTasks,
-    isDeleteTask
+    isDeleteTask,
+    onChangeCheckbox,
   }) {
 
   return (
@@ -28,10 +27,8 @@ function Main(
           onAddTask={onAddTask}
         />
         <TodosList
-          tasks={tasks}
-          toggleCheckbox={toggleCheckbox}
-          tasksFiltered={tasksFiltered}
           buttonActiveAllTasks={buttonActiveAllTasks}
+          onChangeCheckbox={onChangeCheckbox}
         />
         <div className="main__block">
           <div className="main__box-state">
@@ -52,7 +49,7 @@ function Main(
             />
           </div>
           <div className="main__box">
-            <p className="main__state">{unfinishedTasks} items left</p>
+            <p className="main__state"> items left</p>
             <div className="main__box-delete">
               <button
                 className="main__button-delete"
@@ -60,7 +57,7 @@ function Main(
                 onClick={onDeleteTasks}>
                 Clear completed
               </button>
-              <span className={isDeleteTask ? "main__info" : ''}>Done</span>
+              <span className={isDeleteTask ? 'main__info' : ''}>Done</span>
             </div>
           </div>
         </div>

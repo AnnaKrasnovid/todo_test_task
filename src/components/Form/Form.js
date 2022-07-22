@@ -8,7 +8,7 @@ function Form({ onAddTask }) {
   function handleChange(e) {
     setTask(e.target.value);
 
-    if(e.target.value < 1) {
+    if (e.target.value.length <= 0) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -17,8 +17,8 @@ function Form({ onAddTask }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddTask(task);
     setTask('');
+    onAddTask(task);
   }
 
   return (
@@ -33,7 +33,7 @@ function Form({ onAddTask }) {
         value={task || ''}
         onChange={handleChange}
         data-testid='value-elem'
-        />
+      />
       <span className="form__error">{isValid ? 'The field cannot be empty' : ''}</span>
     </form>
   );
