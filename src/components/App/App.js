@@ -22,12 +22,12 @@ function App() {
   const [isDeleteTask, setIsDeleteTask] = React.useState(false);
 
   function handleAddTask(task) {
-    dispatch(addTodo({ task }));
+    dispatch(addTodo({ task, buttonActiveTasksActive, buttonActiveCompleted}));
     setIsDeleteTask(false);
   }
 
   function handleToggleCheckbox(id) {
-    dispatch(toggleTodoComplete({ id, buttonActiveTasksActive, buttonActiveCompleted }));
+    dispatch(toggleTodoComplete({ id, buttonActiveTasksActive, buttonActiveCompleted, buttonActiveAllTasks }));
     setIsDeleteTask(false);
   }
 

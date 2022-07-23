@@ -1,4 +1,4 @@
-
+import { useSelector } from 'react-redux';
 import './Main.css';
 import Form from '../Form/Form';
 import TodosList from '../TodosList/TodosList';
@@ -18,6 +18,8 @@ function Main(
     isDeleteTask,
     onChangeCheckbox,
   }) {
+
+    const numberTask = (useSelector(state => state.todos.numberTask));
 
   return (
     <section className="main">
@@ -49,7 +51,7 @@ function Main(
             />
           </div>
           <div className="main__box">
-            <p className="main__state"> items left</p>
+            <p className="main__state">{numberTask} items left</p>
             <div className="main__box-delete">
               <button
                 className="main__button-delete"

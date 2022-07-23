@@ -7,40 +7,49 @@ const todoSlice = createSlice({
     todos: [...tasksData],
   },
   filterState: {
-    filterTodos: [],
+    filterTodos: [...tasksData],
   },
   numberActiveTask: {
-    number: 0,
+    numberTask: 0,
   },
 
   reducers: {
     addTodo(state, action) {
+      const { task, buttonActiveTasksActive, buttonActiveCompleted } = action.payload;
+
       state.todos.push({
         id: Math.random().toString(36).slice(2),
-        task: action.payload.task,
+        task: task,
         checked: false,
       });
-      state.filterTodos = state.todos;
+
+      if(buttonActiveTasksActive) {
+        state.filterTodos = state.todos.filter(task => task.checked === false);
+      }
+      if(buttonActiveCompleted) {
+        state.filterTodos = state.todos.filter(task => task.checked === true);
+      }
     },
 
     removeTodo(state) {
       state.todos = state.todos.filter(task => task.checked !== true);
-      state.filterTodos = state.filterTodos.filter(task => task.checked !== true);
+      //state.filterTodos = state.filterTodos.filter(task => task.checked !== true);
     },
 
     toggleTodoComplete(state, action) {
-      const {id, buttonActiveTasksActive, buttonActiveCompleted} = action.payload;
+      const { id, buttonActiveTasksActive, buttonActiveCompleted, buttonActiveAllTasks } = action.payload;
 
       const toggledTodo = state.todos.find(todo => todo.id === id);
       toggledTodo.checked = !toggledTodo.checked;
-      const toggledFilterTodos = state.filterTodos.find(todo => todo.id === id);
-      toggledFilterTodos.checked = !toggledFilterTodos.checked;
 
-      if(buttonActiveTasksActive) {
-        state.filterTodos = state.filterTodos.filter(task => task.checked !== true);
+      if (buttonActiveAllTasks) {
+        state.todos = state.todos;
       }
-      if(buttonActiveCompleted) {
-        state.filterTodos = state.filterTodos.filter(task => task.checked !== false);
+      if (buttonActiveTasksActive) {
+        state.filterTodos = state.todos.filter(task => task.checked !== true);
+      }
+      if (buttonActiveCompleted) {
+        state.filterTodos = state.todos.filter(task => task.checked !== false);
       }
     },
 
