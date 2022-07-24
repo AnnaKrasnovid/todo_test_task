@@ -6,7 +6,7 @@ const todoSlice = createSlice({
   initialState: {
     todos: [...tasksData],
     filterTodos: [],
-    numberTask: 0,
+    numberTask: tasksData.filter(task => task.checked === false).length,
   },
   reducers: {
     addTodo(state, action) {
@@ -18,34 +18,34 @@ const todoSlice = createSlice({
         checked: false,
       });
 
-      if(buttonActiveTasksActive) {
+      if (buttonActiveTasksActive) {
         state.filterTodos = state.todos.filter(task => task.checked === false);
       }
-      if(buttonActiveCompleted) {
+      if (buttonActiveCompleted) {
         state.filterTodos = state.todos.filter(task => task.checked === true);
       }
+
+      state.numberTask = state.todos.filter(task => task.checked === false).length;
     },
 
     removeTodo(state) {
       state.todos = state.todos.filter(task => task.checked !== true);
-      //state.filterTodos = state.filterTodos.filter(task => task.checked !== true);
+      state.filterTodos = state.filterTodos.filter(task => task.checked !== true);
     },
 
     toggleTodoComplete(state, action) {
-      const { id, buttonActiveTasksActive, buttonActiveCompleted, buttonActiveAllTasks } = action.payload;
+      const { id, buttonActiveTasksActive, buttonActiveCompleted } = action.payload;
 
       const toggledTodo = state.todos.find(todo => todo.id === id);
       toggledTodo.checked = !toggledTodo.checked;
 
-      if (buttonActiveAllTasks) {
-        state.todos = state.todos;
-      }
       if (buttonActiveTasksActive) {
         state.filterTodos = state.todos.filter(task => task.checked !== true);
       }
       if (buttonActiveCompleted) {
         state.filterTodos = state.todos.filter(task => task.checked !== false);
       }
+      state.numberTask = state.todos.filter(task => task.checked === false).length;
     },
 
     filteredAll(state) {

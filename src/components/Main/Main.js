@@ -8,7 +8,6 @@ import FilteredButton from '../FilteredButton/FilteredButton';
 function Main(
   {
     onAddTask,
-    //unfinishedTasks,
     onAllTask,
     onActiveTasks,
     onCompletedTasks,

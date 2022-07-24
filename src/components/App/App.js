@@ -13,8 +13,6 @@ import Main from '../Main/Main';
 function App() {
   const dispatch = useDispatch();
 
-  //const [unfinishedTasks, setUnfinishedTasks] = React.useState(0);
-
   const [buttonActiveAllTasks, setButtonActiveAllTasks] = React.useState(true);
   const [buttonActiveTasksActive, setButtonActiveTasksActive] = React.useState(false);
   const [buttonActiveCompleted, setButtonActiveCompleted] = React.useState(false);
@@ -27,7 +25,7 @@ function App() {
   }
 
   function handleToggleCheckbox(id) {
-    dispatch(toggleTodoComplete({ id, buttonActiveTasksActive, buttonActiveCompleted, buttonActiveAllTasks }));
+    dispatch(toggleTodoComplete({ id, buttonActiveTasksActive, buttonActiveCompleted }));
     setIsDeleteTask(false);
   }
 
@@ -63,7 +61,6 @@ function App() {
   return (
     <Main
       onAddTask={handleAddTask}
-      //unfinishedTasks={unfinishedTasks}
       onAllTask={visibleAllTasks}
       onActiveTasks={visibleActiveTasks}
       onCompletedTasks={visibleCompletedTasks}
