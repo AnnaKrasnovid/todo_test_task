@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 import './Main.css';
 import Form from '../Form/Form';
@@ -19,7 +20,7 @@ function Main(
     onChangeCheckbox,
   }) {
 
-    const numberTask = (useSelector(state => state.todos.numberTask));
+  const numberTask = (useSelector(state => state.todos.numberTask));
 
   return (
     <section className="main">

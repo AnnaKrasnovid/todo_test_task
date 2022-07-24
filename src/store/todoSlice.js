@@ -5,14 +5,9 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState: {
     todos: [...tasksData],
-  },
-  filterState: {
-    filterTodos: [...tasksData],
-  },
-  numberActiveTask: {
+    filterTodos: [],
     numberTask: 0,
   },
-
   reducers: {
     addTodo(state, action) {
       const { task, buttonActiveTasksActive, buttonActiveCompleted } = action.payload;

@@ -7,12 +7,43 @@
     "no-unused-vars": "warn",
     "prefer-const": "error",
     "no-console": "warn",
-    "quotes": ["error", "single"],
-    "indent":["warn", 2],
-    "max-len": ["error", {"code": 120}],
-    "comma-dangle": ["error", "always-multiline"],
-    "semi": ["warn", "always"],
-    "import/order": ["warn", {"groups":["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]}],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "indent": [
+      "warn",
+      2
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "semi": [
+      "warn",
+      "always"
+    ],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ]
+      }
+    ],
     "linebreak-style": 0,
     "object-curly-newline": 0,
     "no-whitespace-before-property": "warn",
